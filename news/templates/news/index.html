@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">
+        <center><h1>News Center</h1>
+            <h3>Please select the News websites you like to get the latest News Headlines from: </h3>
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                <table>
+                {{ form.as_table }}
+                </table>
+                <input type="submit" value="Get me News!!!" class="btn btn-success" />
+            </form>
+           <!-- <a href="/" class="btn btn-success">Refresh News</a> -->
+        </center>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% if d1 and d2 and d3 %}
+                <div class="col-4">
+                    <h3 class="text-centre"> News from Times of india</h3>
+                    {% for n in toi_news %}
+                    <h5> -  {{n}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+                <div class="col-4">
+                    <h3 class="text-centre">News from Hindustan times</h3>
+                    {% for htn in ht_news %}
+                    <h5> - {{htn}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+                <div class="col-4">
+                <h3 class="text-centre">News from CBC</h3>
+                {% for cn in cbc_news %}
+                <h5> - {{cn}} </h5>
+                <hr>
+                {% endfor %}
+                <br>
+                </div>
+            {% elif d1 and d2 and not d3 %}
+                <div class="col-6">
+                    <h3 class="text-centre"> News from Times of india</h3>
+                    {% for n in toi_news %}
+                    <h5> -  {{n}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+                <div class="col-6">
+                    <h3 class="text-centre">News from Hindustan times</h3>
+                    {% for htn in ht_news %}
+                    <h5> - {{htn}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+            {% elif d1 and not d2 and d3 %}
+                <div class="col-6">
+                    <h3 class="text-centre"> News from Times of india</h3>
+                    {% for n in toi_news %}
+                    <h5> -  {{n}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+                <div class="col-6">
+                <h3 class="text-centre">News from CBC</h3>
+                {% for cn in cbc_news %}
+                <h5> - {{cn}} </h5>
+                <hr>
+                {% endfor %}
+                <br>
+                </div>
+            {% elif not d1 and d2 and d3 %}
+                <div class="col-6">
+                    <h3 class="text-centre">News from Hindustan times</h3>
+                    {% for htn in ht_news %}
+                    <h5> - {{htn}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+                <div class="col-6">
+                <h3 class="text-centre">News from CBC</h3>
+                {% for cn in cbc_news %}
+                <h5> - {{cn}} </h5>
+                <hr>
+                {% endfor %}
+                <br>
+                </div>
+            {% elif d1 and not d2 and not d3 %}
+                <div class="col-12">
+                    <h3 class="text-centre"> News from Times of india</h3>
+                    {% for n in toi_news %}
+                    <h5> -  {{n}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+            {% elif not d1 and d2 and not d3 %}
+                <div class="col-12">
+                    <h3 class="text-centre">News from Hindustan times</h3>
+                    {% for htn in ht_news %}
+                    <h5> - {{htn}} </h5>
+                    <hr>
+                    {% endfor %}
+                    <br>
+                </div>
+            {% elif not d1 and not d2 and d3 %}
+                <div class="col-12">
+                <h3 class="text-centre">News from CBC</h3>
+                {% for cn in cbc_news %}
+                <h5> - {{cn}} </h5>
+                <hr>
+                {% endfor %}
+                <br>
+                </div>
+            
+            {% endif %}
+        </div>
+ 
+ 
+</div>
+    <script
+src="http://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
