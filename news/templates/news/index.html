@@ -8,19 +8,24 @@
     <div class="jumbotron">
         <center><h1>News Center</h1>
             <h3>Please select the News websites you like to get the latest News Headlines from: </h3>
+            <!--Designing the form for the HTML page-->
             <form method="POST" class="post-form">
                 {% csrf_token %}
                 <table>
                 {{ form.as_table }}
                 </table>
+                <!--Button for posting the form data to get the news-->
                 <input type="submit" value="Get me News!!!" class="btn btn-success" />
             </form>
-           <!-- <a href="/" class="btn btn-success">Refresh News</a> -->
         </center>
     </div>
+    <!--Defining the Structure in which the data will be displayed-->
     <div class="container">
         <div class="row">
+            <!--If else structure to only fetch the requested news-->
+            <!--To get the news from all the websites-->
             {% if d1 and d2 and d3 %}
+                <!--Dividing the row into 3 equally sized columns-->
                 <div class="col-4">
                     <h3 class="text-centre"> News from Times of india</h3>
                     {% for n in toi_news %}
@@ -45,6 +50,7 @@
                 {% endfor %}
                 <br>
                 </div>
+            <!--To get the news from 2 websites-->
             {% elif d1 and d2 and not d3 %}
                 <div class="col-6">
                     <h3 class="text-centre"> News from Times of india</h3>
@@ -96,6 +102,7 @@
                 {% endfor %}
                 <br>
                 </div>
+            <!--To get the news from only 1 website-->
             {% elif d1 and not d2 and not d3 %}
                 <div class="col-12">
                     <h3 class="text-centre"> News from Times of india</h3>
@@ -123,7 +130,7 @@
                 {% endfor %}
                 <br>
                 </div>
-            
+            <!--No data is passed if the user submits an empty form-->
             {% endif %}
         </div>
  
