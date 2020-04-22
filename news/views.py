@@ -10,7 +10,7 @@ toi_soup = BeautifulSoup(toi_r.content, 'html5lib')
 # finding all the h2 tags from the parsed webpage
 toi_headings = toi_soup.find_all('h2')
 # removing footers
-toi_headings = toi_headings[0:-13]
+toi_headings = toi_headings[3:-13]
 toi_news = []
 
 for th in toi_headings:
