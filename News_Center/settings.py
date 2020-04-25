@@ -76,11 +76,8 @@ WSGI_APPLICATION = 'News_Center.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'News_Database',
-        'USER': 'postgres',
-        'PASSWORD': '989242',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
